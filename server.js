@@ -51,6 +51,19 @@ app.get('/health', (req, res) => {
   res.json({ ok: true, time: new Date().toISOString(), port: PORT });
 });
 
+app.get('/debug/music-sources', asyncRoute(async (req, res) => {
+  const local = await searchLocal('demo test lac troi', req, 10);
+  res.json({
+    ok: true,
+    hasZingApiBase: Boolean(process.env.ZING_API_BASE),
+    hasNctApiBase: Boolean(process.env.NCT_API_BASE),
+    hasSoundCloudApiBase: Boolean(process.env.SOUNDCLOUD_API_BASE),
+    publicBaseUrl: process.env.PUBLIC_BASE_URL || null,
+    localCountForDebugQuery: local.length,
+    message: 'Nếu tất cả has...ApiBase là false và chưa thêm MP3 vào public/music/catalog.json thì /music/play sẽ không có nhạc thật.'
+  });
+}));
+
 
 function asyncRoute(handler) {
   return (req, res, next) => Promise.resolve(handler(req, res, next)).catch(next);

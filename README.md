@@ -1,3 +1,25 @@
+# Xiaozhi Music Tools Server - NO DEMO FIX
+
+Bản này đã xóa `local-demo`. Nếu chưa cấu hình nguồn nhạc thật hoặc chưa thêm MP3 riêng, `/music/play?q=...` sẽ trả `ok:false`, không trả demo giả nữa.
+
+## Kiểm tra nguồn nhạc
+
+Mở:
+
+```txt
+/debug/music-sources
+```
+
+Nếu `hasZingApiBase:false`, `hasNctApiBase:false`, `hasSoundCloudApiBase:false` nghĩa là server chưa nối nguồn nhạc online. Cần thêm biến môi trường trên Render, ví dụ:
+
+```txt
+ZING_API_BASE=https://server-zing-api-khac.onrender.com
+```
+
+Hoặc thêm nhạc MP3 của bạn vào `public/music` và khai báo trong `public/music/catalog.json`.
+
+---
+
 # Xiaozhi / AIBI Music + Tools Server for Render
 
 Server Node.js dùng cho Xiaozhi/ESP32/AIBI. Bản này có 2 nhóm chức năng:
