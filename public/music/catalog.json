@@ -1,0 +1,9 @@
+[
+  {
+    "id": "local-demo",
+    "title": "Demo local song - replace me",
+    "artist": "Your library",
+    "file": "demo.mp3",
+    "keywords": ["demo", "test", "local"]
+  }
+]

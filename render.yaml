@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: xiaozhi-music-tools-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: API_TIMEOUT_MS
+        value: 9000
+      - key: GOLD_API_BASE
+        value: https://www.vang.today
+      - key: LOTTERY_RSS_URL
+        value: https://xskt.com.vn/rss-feed/mien-bac-xsmb.rss
+      - key: COINGECKO_API_BASE
+        value: https://api.coingecko.com/api/v3
